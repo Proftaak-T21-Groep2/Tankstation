@@ -1,5 +1,4 @@
 String unfinished;
-String temp;
 bool reading = false;
 bool done = false;
 
@@ -8,6 +7,7 @@ String getCommand()
   char receivedCharacter = readSerialLine();
   if (receivedCharacter == '%' && !reading)
   {
+    unfinished = "";
     reading = true;
   }
 
@@ -30,11 +30,7 @@ String getCommand()
   {
     done = false;
     reading = false;
-    temp = unfinished;
-    unfinished = "";
-    return temp;
+    return unfinished;
   }
   return " ";
 }
-
-
